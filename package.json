@@ -7,14 +7,43 @@
     "string",
     "trim"
   ],
+  "scripts": {
+    "test": "mocha"
+  },
   "author": "TJ Holowaychuk <tj@vision-media.ca>",
   "devDependencies": {
-    "mocha": "*",
-    "should": "*"
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "mocha": "^8.3.2",
+    "semantic-release": "^17.4.2",
+    "should": "^13.2.3"
   },
   "main": "index",
   "repository": {
     "type": "git",
     "url": "https://github.com/Trott/trim.git"
+  },
+  "release": {
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        [
+            "@semantic-release/changelog",
+            {
+                "changelogFile": "CHANGELOG.md"
+            }
+        ],
+        "@semantic-release/npm",
+        [
+            "@semantic-release/git",
+            {
+                "assets": [
+                    "CHANGELOG.md",
+                    "package.json"
+                ],
+                "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+            }
+        ]
+    ]
   }
 }
