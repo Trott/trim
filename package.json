@@ -24,6 +24,9 @@
     "url": "https://github.com/Trott/trim.git"
   },
   "release": {
+    "branches": [
+      "main"
+    ],
     "plugins": [
         "@semantic-release/commit-analyzer",
         "@semantic-release/release-notes-generator",
